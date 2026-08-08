@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tompsantos/orbeai-model/datasets/schemas/sft-v0.1.schema.json",
+  "title": "OrbeAI SFT Dataset v0.1 Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "version", "category", "language", "difficulty", "source", "messages"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^orbe-sft-[0-9]{6}$"
+    },
+    "version": {
+      "type": "string",
+      "enum": ["0.1-dev", "0.1-rc1", "0.1"]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "ptbr_communication",
+        "instruction_following",
+        "practical_reasoning",
+        "technical_ai_coding",
+        "document_analysis",
+        "structured_output",
+        "tool_use",
+        "uncertainty_truthfulness",
+        "orbe_behavior"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "const": "pt-BR"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "human_curated",
+        "human_written",
+        "synthetic_reviewed",
+        "public_licensed",
+        "transformed_internal"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "notes": {"type": "string"},
+    "quality_score": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "reviewed_by": {"type": "string"},
+    "license": {"type": "string"},
+    "synthetic_generator": {"type": "string"},
+    "messages": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "content"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": ["system", "user", "assistant", "tool"]
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
