@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# Notebooks / caches
+.ipynb_checkpoints/
+.cache/
+
+# Hugging Face / model caches
+.huggingface/
+**/huggingface_cache/
+
+# Large model artifacts
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+*.onnx
+*.onnx_data
+
+# Training outputs
+outputs/
+checkpoints/
+runs/
+wandb/
+trackio/
+
+# Large datasets / local data
+*.parquet
+*.arrow
+*.csv.gz
+*.jsonl.gz
+data/private/
+data/raw/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
